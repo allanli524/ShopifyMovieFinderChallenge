@@ -45,7 +45,7 @@ const HomePage = () => {
 
     const nominate = (movie) => {
         if(checkNominated(movie)){
-            setNominated(new Array(...nominated, movie))
+            setNominated([...nominated, movie])
         }else{
             alert("This movie has already been nominated!")
         }
