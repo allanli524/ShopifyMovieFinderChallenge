@@ -1,0 +1,14 @@
+.navbarrr {
+  width: 100%;
+}
+
+.navbar2 {
+  display: flex;
+  width: 80%;
+  flex-direction: row;
+  align-items: center;
+}
+
+.cont1 {
+  width: 100%;
+}
