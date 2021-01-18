@@ -3,10 +3,7 @@ html {
   min-height: 100%;
 }
 
-html,
-body,
-#app,
-#app > div {
+body {
   height: 100%;
   background-color: rgb(16, 167, 255);
   display: flex;

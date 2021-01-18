@@ -1,6 +1,5 @@
 .cont {
   margin-top: 30%;
-  font-size: 50px;
 }
 
 .cont2 {
@@ -8,4 +7,16 @@
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+.title1 {
+  font-size: 50px;
+}
+
+.text1 {
+  font-size: 20px;
+}
+
+.btns1 {
+  width: 30%;
 }

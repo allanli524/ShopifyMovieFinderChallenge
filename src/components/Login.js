@@ -5,6 +5,7 @@ import {InputGroup, Button, FormControl} from "react-bootstrap";
 import {Box} from "@material-ui/core";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import './css/login.css';
 
 const Login = () => {
     const [ username, setUsername ] = useState("")
@@ -53,8 +54,8 @@ const Login = () => {
     }
 
     return (
-        <div>
-            <h1 className="title-name">Create a Profile</h1>
+        <div className="cont">
+            <h1 className="title-name">Login and continue progress</h1>
             <InputGroup className="input-form">
                 <div className="device-id">
                     <Box mt={5} width={1}>
@@ -63,7 +64,7 @@ const Login = () => {
                         </div>
                         <FormControl
                             value={username} 
-                            placeholder="Your Username"
+                            placeholder="Username"
                             onChange={e => setUsername(e.target.value)}
                             aria-label="username"
                             aria-describedby="basic-addon1"
@@ -78,6 +79,7 @@ const Login = () => {
                         <FormControl
                             value={password} 
                             placeholder="Password"
+                            type="password"
                             onChange={e => setPassword(e.target.value)}
                             aria-label="Password"
                             aria-describedby="basic-addon1"
@@ -87,7 +89,7 @@ const Login = () => {
                 <Box mt={5} width={1} className="submit">
                     <Button 
                         onClick={() => {userLogin()}}
-                        className="btn"
+                        className="btn2"
                         >
                             Login
                     </Button>

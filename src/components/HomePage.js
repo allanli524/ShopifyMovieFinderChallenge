@@ -2,7 +2,7 @@ import React, { useState, useContext } from 'react';
 import {useHistory} from "react-router-dom";
 import axios from 'axios';
 import { InputGroup, Button } from 'reactstrap';
-import { Navbar} from 'react-bootstrap';
+import { Navbar, Jumbotron } from 'react-bootstrap';
 import {AppContext} from "../contextlib";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/homepage.css';
@@ -19,6 +19,7 @@ const HomePage = () => {
     const [ notFound, setNotFound ] = useState(false)
 
     const searchMovie = (movie) => {
+        setResults([])
         console.log(movie)
         axios.get(`http://www.omdbapi.com/?s=${movie}&apikey=d959d59b`).then((res) => {
             if(res.data.Search){
@@ -86,7 +87,7 @@ const HomePage = () => {
             <Navbar bg="light">
                 <Navbar.Brand> Nominate Your Favourite Films </Navbar.Brand>
                 {currentUser.username &&
-                    <div>
+                    <div className="widget">
                         <p className="welcome1">Welcome {currentUser.username}!</p>
                         <Button className="logout"
                             onClick={() => {
@@ -99,10 +100,11 @@ const HomePage = () => {
                 }
             </Navbar>
             </div>
-            <div>
+            <div className="searchBar">
                 <InputGroup className="mb-3">
                     <input
                     placeholder="Movie Name"
+                    className="searchinput"
                     value={movie}
                     onChange={e => { 
                         setMovie(e.target.value)
@@ -113,7 +115,7 @@ const HomePage = () => {
                 </InputGroup>
             </div>
             <div className="navbar2">
-                <div>
+                <Jumbotron className="searchResult">
                     <h1>Search results for: {searchState && movie}</h1>
                     { notFound && <h2>No results found ...</h2>}
                     <ul>
@@ -121,13 +123,13 @@ const HomePage = () => {
                         searchState && results.map( (movie) =>  (
                             <div key={movie.imdbID}>
                                 <li>{movie.Title}</li>
-                                <Button onClick={() => {nominate(movie)}}>Nominate</Button>
+                                <Button className="btns" onClick={() => {nominate(movie)}}>Nominate</Button>
                             </div>
                         ))
                     }
                     </ul>
-                </div>
-                <div>
+                </Jumbotron>
+                <Jumbotron className="nominated">
                     <div>
                         <h1>Nominated Films</h1>
                         <ul>
@@ -135,7 +137,7 @@ const HomePage = () => {
                                 nominated.map( (movie) =>  (
                                     <div key={movie.imdbID}>
                                         <li>{movie.Title}</li>
-                                        <Button onClick={() => {remove(movie)}}>Remove</Button>
+                                        <Button className="btns" onClick={() => {remove(movie)}}>Remove</Button>
                                     </div>
                                 ))
                             } 
@@ -144,7 +146,7 @@ const HomePage = () => {
                     <div>
                         <Button onClick={() => {auth()}}>Save Nomination List</Button>
                     </div>
-                </div>
+                </Jumbotron>
             </div>
         </div>
     )
